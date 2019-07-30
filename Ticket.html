@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<html lang ="en">
+
+	<head>
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+		<title>Hooker Appliance</title>	
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+		<link rel="stylesheet" href="style.css">
+		
+	</head>
+	
+	<body>
+	
+		<div class = "menuBar center">
+			<div>				
+				<img src="https://www.hookerappliance.com/images/logo.png?ccid=x3b983d3a" width="200" class="logo">
+				<img src="https://www.hookerappliance.com/images/logo.png?ccid=x3b983d3a" width="200" class="logo2">
+				<h1 class = "title"> HOOKER <br>APPLIANCE </h1>
+				
+			</div>
+		</div>
+		<p>
+			Could make a way to add things to ticket. <br>
+			Need to make sure people are selecting right inputs. <br>
+			Can make more info in TicketLabels to set different stuff like size and type.<br>
+			Need to add money info<br>
+			add money up and have an add item button.<br>
+			No matter the size it will fit to screen. try to fix it.
+			
+			
+		</p>
+		
+	
+
+		<div id = "app" class ="ticketBox" >
+			<span>
+			
+			<h1 class = "center">Sale Ticket</h1>
+			</span>
+			<form>
+			
+
+				
+				<div class = "ticket inLine"  v-for = "inputs in labels">
+					<div :class = "inputs">
+						<label :for ="inputs" > {{inputs}}: </label>
+						<input type="text" :id="inputs">
+					</div>
+				</div>
+				
+				<div class = "ticket inLine">
+					<label for ="payment" class="inLine">Payment Type</label>
+					<select name="Payment" id="payment">
+						<option value="credit">Credit</option>
+						<option value="debit">Debit</option>
+						<option value="cash">Cash</option>
+						<option value="check">Check</option>
+						<option value="synchrony">Synchrony</option>
+						<option value="cityCreek">City Creek</option>
+					</select>
+				</div>
+				
+				<div>
+					
+				</div>
+				
+				<div class = "ticket">
+					<input type="button" value = "Summit Ticket">
+				</div>
+				
+			</form>	
+		</div>
+		
+
+		
+		<script type="text/javascript">
+			ticketLabels = [
+			"Date",
+			"Number",
+			"Name",
+			"Address",
+			"City",
+			"State",
+			"Salesman",
+			"Invoice",
+			
+			];
+			
+			var d = new Date();
+			
+			theDate = (d.getUTCMonth()+1)+ "/" + d.getDate() + "/" +d.getFullYear();
+			var app = new Vue({
+				el: '#app',
+				// All the data used in vue
+				data: {
+					labels:ticketLabels,
+					date:theDate,
+				},
+				methods:{
+				
+				},
+				computed:{
+					
+				},				
+			});
+			document.getElementById('Date').value = theDate;
+	
+		</script>
+		
+		
+	</body>
+
+</html>

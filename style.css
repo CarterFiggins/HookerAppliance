@@ -1,0 +1,198 @@
+<style type="text/css">
+
+.nothing{
+}
+body{
+	background: whitesmoke;
+	
+}
+
+.logo{
+	float: left;
+	padding: 0px;
+	margin: 0px;
+	
+}
+.logo2{
+	float:right;
+}
+
+
+.title{
+	font-family: Arial Black;
+	color: #0C1B5C;	
+	
+
+}
+.line{
+	display: inline-block
+}
+.center{
+	text-align: center;
+	
+}
+
+.menuBar{
+	background-color: #b8c6d3;
+	border-radius: 25px;
+
+
+}
+.home{
+	color: #0C1B5C;
+	font-size: 20px;
+	font-weight: bold;
+	
+
+}
+
+.ticket{
+	padding: 5px;
+	margin: 5px;
+	float: left;
+
+}
+.cards{
+	padding:5px;
+	margin:5px;
+	float: left;
+	font-size:110%;
+	font-weight: bold;
+}
+.lookUpBox{
+	font-size:30px;
+	padding:5px;
+	margin:20px;
+}
+
+body{
+	margin:10px;
+}
+
+#Type{
+	font-size:
+}
+
+.summitCard{
+	float: right;
+	margin-top: 1.5%;
+	margin-right: 7%;
+}
+
+
+
+.ticketBox{
+	background-color: #00aaff;
+	margin-left: 200px;
+	margin-right: 200px;
+	padding: 20px;
+}
+.cardBox{
+	background: #B8C6D3;
+	padding: 10px;
+	width:95%;
+	margin-left: 2.7%;
+	
+}
+
+.bHooker{
+	padding: 5px;
+	color: white;
+	border: 2px solid #0C1B5C;
+	margin: 5px;
+	background-color: #0C1B5C;
+	-webkit-transition-duration: 0.4s;
+	transition-duration: 0.4s;
+}
+.check{
+	height: 25px;
+	width: 25px;
+	margin: 10px;
+	
+	
+}
+
+.bRed{
+	margin: 5px;
+	padding: 25px;
+	width: 40%;
+	color: white;
+	font-size: 30px;
+	border: 2px solid #A72928;
+	background-color: #A72928;
+	-webkit-transition-duration: 0.4s; /* Safari */
+	transition-duration: 0.4s;
+	cursor: pointer;
+
+	margin-bottom: .9%;
+	margin-top: 4%;
+	
+}
+
+.bBlue{
+	margin: 5px;
+	padding: 25px;
+	width: 40%;
+	color: white;
+	font-size: 30px;
+	border: 2px solid #0C1B5C;
+	background-color: #0C1B5C;
+	-webkit-transition-duration: 0.4s; /* Safari */
+	transition-duration: 0.4s;
+	cursor: pointer;
+	margin-bottom: .9%;
+	margin-top:4%
+	
+	
+}
+
+.button{
+	font-size: 20px;
+	border-radius: 8px;
+	text-align: center;
+
+}
+
+.bRed:hover{
+	background-color: white;
+	color: black;
+}
+.bBlue:hover{
+	background-color: white;
+	color: black;
+}
+.bHooker:hover{
+	background-color: white;
+	color: black;
+}
+
+.bBlue:active {
+  background-color: #0C1B5C;
+  color: white;
+  transform: translateY(4px);
+}
+.bRed:active {
+  background-color: #A72928;
+  color: white;
+  transform: translateY(4px);
+}
+.bHooker:active {
+  background-color: #0C1B5C;;
+  color: white;
+  transform: translateY(4px);
+}
+
+.blue{
+	color: #0C1B5C;
+}
+.red{
+	color: #A72928;
+	font-weight: bold;
+}
+
+
+
+
+
+
+</style>
