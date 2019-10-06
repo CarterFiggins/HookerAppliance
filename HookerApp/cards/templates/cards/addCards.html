@@ -7,8 +7,8 @@
 		<title>Hooker Appliance</title>	
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-		<link rel="stylesheet" href="style.css">
+		{% load static %}
+		<link rel="stylesheet" href="{%static 'cards/style.css'%}">
 		
 	</head>
 	
@@ -16,13 +16,13 @@
 	
 		<div class = "menuBar center">
 			<div>				
-				<img src="logo.png" width="200" class="logo">
-				<img src="logo.png" width="200" class="logo2">
+				<img src="{% static 'cards/logo.png'%}" width="200" class="logo">
+				<img src="{% static 'cards/logo.png'%}" width="200" class="logo2">
 				<h1 class = "title"> HOOKER <br>APPLIANCE ADD CARD </h1>	
 							
 			</div>
 			<div>
-				<a href= MainCards.html class="home">HOME </a>
+				<a href= "{% url 'cards:mainMenu' %}" class="home">HOME </a>
 			</div>
 		</div>
 		
@@ -36,12 +36,26 @@
 			
 			<form>
 			
-				<div class = " cards"  v-for = "inputs in labels">
+				<div class = " cards" >
 					<span>
-						<label :for ="inputs" > {{inputs}}: </label>
+						<label :for ="inputs" > Modle Number: </label>
 						<input type="text" :id="inputs">
 					</span>
 				</div>
+
+				<div class = " cards" >
+					<span>
+						<label :for ="inputs" > Brand/Make: </label>
+						<input type="text" :id="inputs">
+					</span>
+				</div>
+
+				<div class = " cards" >
+						<span>
+							<label :for ="inputs" > Appliance Type: </label>
+							<input type="text" :id="inputs">
+						</span>
+					</div>
 			
 				<div >
 					<input class = "bHooker" type="button" value = "Add Card">

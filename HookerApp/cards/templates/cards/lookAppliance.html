@@ -7,8 +7,8 @@
 		<title>Hooker Appliance</title>	
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-		<link rel="stylesheet" href="style.css">
+		{% load static %}
+		<link rel="stylesheet" href="{%static 'cards/style.css'%}">
 		
 	</head>
 	
@@ -17,13 +17,13 @@
 		<div class = "menuBar center">
 		
 			<div>				
-				<img src="logo.png" width="200" class="logo">
-				<img src="logo.png" width="200" class="logo2">
+				<img src="{% static 'cards/logo.png'%}" width="200" class="logo">
+				<img src="{% static 'cards/logo.png'%}" width="200" class="logo2">
 				<h1 class = "title"> HOOKER <br>APPLIANCE'S INVENTORY </h1>
 				
 			</div>
 			<div>
-				<a href= MainCards.html class="home">HOME </a>
+				<a href="{% url 'cards:mainMenu' %}" class="home">HOME </a>
 			</div>
 			
 		</div>
@@ -32,19 +32,12 @@
 		<div class ="lookUpBox cardBox center" id ="box" >
 
 			
-			<h1 class = "center">Look up a Card</h1>
+			<h1 class = "center">Look up an Appliance</h1>
 			
-			<form>
-				<div >
-					<span class = "red"> Search by:</span>
-					Model Number: <input class = "check" type="checkbox" value = "Model" checked> 
-					Brand Name:<input class = "check" type="checkbox" value = "Brand"> 
-					Type of Appliance:<input class = "check" type="checkbox" value = "Type"> 
-				</div> 
-			</form>
+	
 			
-			<div>
-				Search:<input type="text">
+			<div class = "search">
+				Model:<input type="text"> Serial:<input type="text">
 			</div>
 			
 		</div>
