@@ -1,37 +1,11 @@
-<!DOCTYPE html>
-
-<html lang ="en">
-
-	<head>
-		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
-		<title>Hooker Appliance</title>	
-		<meta charset="utf-8">
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-		{% load static %}
-		<link rel="stylesheet" href="{%static 'cards/style.css'%}">
+{% extends "cards/NavBar.html" %}
 		
-	</head>
 	
-	<body>
-	
-		<div class = "menuBar center">
-		
-			<div>				
-				<img src="{% static 'cards/logo.png'%}" width="200" class="logo">
-				<img src="{% static 'cards/logo.png'%}" width="200" class="logo2">
-				<h1 class = "title"> HOOKER <br>APPLIANCE'S INVENTORY </h1>
-				
-			</div>
-			<div>
-				<a href= "{% url 'cards:mainMenu' %}" class="home">HOME </a>
-			</div>
-			
-		</div>
+		{% block page %}
+
 		
 		
 		<div class ="lookUpBox cardBox center" id ="box" >
-
-			
 			<h1 class = "center">Look up a Card</h1>
 			
 			<form>
@@ -48,13 +22,15 @@
 			</div>
 			
 		</div>
-		
-		<script type="text/javascript">
-			
 
+		<div class = "cardBox">
+			{% if cards %}
+				<div class= "lookUpBox">
+					{% for card in cards %}
+						<p> Model: {{card.modelNumber}} Brand: {{card.brand}} Appliance Type: {{card.applianceType}} </p>
+					{% endfor %}
+				</div>
+			{% endif %}
+		</div>
 		
-		</script>
-		
-	</body>
-
-</html>
+		{% endblock %}

@@ -21,6 +21,12 @@ body{
 	
 
 }
+
+.lookUp{
+	margin: 10px;
+	padding: 10px;
+}
+
 .line{
 	display: inline-block
 }
@@ -51,11 +57,13 @@ body{
 }
 .cards{
 	padding:5px;
-	margin:5px;
+	margin: 5px;
 	float: left;
 	font-size:110%;
 	font-weight: bold;
 }
+
+
 .lookUpBox{
 	font-size:30px;
 	padding:5px;
@@ -66,9 +74,6 @@ body{
 	margin:10px;
 }
 
-#Type{
-	font-size:
-}
 
 .summitCard{
 	float: right;
@@ -76,20 +81,38 @@ body{
 	margin-right: 7%;
 }
 
-
-
 .ticketBox{
 	background-color: #00aaff;
 	margin-left: 200px;
 	margin-right: 200px;
 	padding: 20px;
 }
+
 .cardBox{
 	background: #B8C6D3;
 	padding: 10px;
 	width:95%;
+	margin-right: 2.7%;
 	margin-left: 2.7%;
 	
+	
+}
+
+.allCards{
+	background: #0C1B5C;
+	width: 95%;
+	padding: 5px;
+	margin-top: .5%;
+	margin-right: 2.7%;
+	margin-left: 2.7%;
+	border: 4px solid black;
+	color: white;
+	float: left;
+	font-size: 110%
+}
+
+.cardWaper{
+	margin: 2%
 }
 
 .bHooker{

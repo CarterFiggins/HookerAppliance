@@ -5,12 +5,12 @@ from django.utils import timezone
 
 
 class Card(models.Model):
-    modleNumber = models.CharField(max_length=200)
+    modelNumber = models.CharField(max_length=200)
     brand = models.CharField(max_length=200)
     applianceType = models.CharField(max_length= 50)
     pub_date = models.DateTimeField('date published')
     def __str__(self):
-        return self.modleNumber
+        return self.modelNumber
     def was_published_recently(self):
         return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
     

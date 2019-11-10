@@ -1,98 +1,74 @@
-<!DOCTYPE html>
 
-<html lang ="en">
-
-	<head>
-		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
-		<title>Hooker Appliance</title>	
-		<meta charset="utf-8">
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-		{% load static %}
-		<link rel="stylesheet" href="{%static 'cards/style.css'%}">
-		
-	</head>
 	
-	<body>
-	
-		<div class = "menuBar center">
-			<div>				
-				<img src="{% static 'cards/logo.png'%}" width="200" class="logo">
-				<img src="{% static 'cards/logo.png'%}" width="200" class="logo2">
-				<h1 class = "title"> HOOKER <br>APPLIANCE ADD CARD </h1>	
-							
-			</div>
-			<div>
-				<a href= "{% url 'cards:mainMenu' %}" class="home">HOME </a>
-			</div>
-		</div>
-		
-		<br>
+{% extends "cards/NavBar.html" %}
 		
 	
+		{% block page %}
 
-		<div id = "app" class ="cardBox cards c" >
+		<div class ="cardBox cards" >
 			
 			<h1 class = "center">Add Appliance Card</h1>
 			
-			<form>
-			
+			<form action = '{% url "cards:newCard" %}' method = "post">
+				{% csrf_token %}
 				<div class = " cards" >
 					<span>
-						<label :for ="inputs" > Modle Number: </label>
-						<input type="text" :id="inputs">
+						<label for ="model" > Model Number: </label>
+						<input type="text" id="model" name="model">
 					</span>
 				</div>
 
 				<div class = " cards" >
 					<span>
-						<label :for ="inputs" > Brand/Make: </label>
-						<input type="text" :id="inputs">
+						<label for ="brand" > Brand/Make: </label>
+						<input type="text" id="brand" name = "brand">
 					</span>
 				</div>
 
 				<div class = " cards" >
 						<span>
-							<label :for ="inputs" > Appliance Type: </label>
-							<input type="text" :id="inputs">
+							<label for ="type" > Appliance Type: </label>
+							<input type="text" id="type" name = "type">
 						</span>
 					</div>
 			
 				<div >
-					<input class = "bHooker" type="button" value = "Add Card">
+					<input class = "bHooker" type="submit" value = "Add Card" onclick="newCard()">
 				</div>
 				
 			</form>	
 			
 		</div>
+
+		<div id ="cardView">
+			{% if context %}
+				<p>{{ context.saveCard.modelNumber }}</p>
+			{% endif %}
+
+		</div>
+
+		<div class = "cardWaper">
+				{% if cards %}
+						{% for card in cards %}
+							<div class="allCards">
+								<p> Model: {{card.modelNumber}} Brand: {{card.brand}} Appliance Type: {{card.applianceType}} </p>
+							</div>
+						{% endfor %}
+				{% endif %}
+		</div>
 		
 
-		
+<!-- 		
 		<script type="text/javascript">
-			ticketLabels = [
-			"Model#",
-			"Brand/Make",			
-			"Type",
-			];
-			
-	
-			var app = new Vue({
-				el: '#app',
-				// All the data used in vue
-				data: {
-					labels:ticketLabels,
-				},
-				methods:{
-				
-				},
-				computed:{
-					
-				},				
-			});
-			document.getElementById('Date').value = theDate;
-	
-		</script>
-		
-		
-	</body>
+			newCard =function makeCard(){
+				var para = document.createElement("p");
+				var text = document.createTextNode("I LOVE YOU");
+				para.appendChild(text);
+				var insert = document.getElementById("cardView");
+				insert.appendChild(para);
+			}
 
-</html>
+	
+		</script> -->
+{% endblock %}
+		
