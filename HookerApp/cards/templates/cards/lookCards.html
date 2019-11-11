@@ -23,14 +23,16 @@
 			
 		</div>
 
-		<div class = "cardBox">
-			{% if cards %}
-				<div class= "lookUpBox">
-					{% for card in cards %}
-						<p> Model: {{card.modelNumber}} Brand: {{card.brand}} Appliance Type: {{card.applianceType}} </p>
-					{% endfor %}
-				</div>
-			{% endif %}
+		<div class = "cardWaper">
+				{% if cards %}
+						{% for card in cards %}
+							<a href = "/applianceView/{{card.id}}" >
+							<div class="allCards">
+								<p> Model: {{card.modelNumber}} Brand: {{card.brand}} Appliance Type: {{card.applianceType}} </p>
+							</div>
+							</a>
+						{% endfor %}
+				{% endif %}
 		</div>
 		
 		{% endblock %}

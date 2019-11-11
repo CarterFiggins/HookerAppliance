@@ -1,9 +1,7 @@
 
 	
 {% extends "cards/NavBar.html" %}
-		
-	
-		{% block page %}
+	{% block page %}
 
 		<div class ="cardBox cards" >
 			
@@ -40,35 +38,19 @@
 			
 		</div>
 
-		<div id ="cardView">
-			{% if context %}
-				<p>{{ context.saveCard.modelNumber }}</p>
-			{% endif %}
-
-		</div>
 
 		<div class = "cardWaper">
 				{% if cards %}
 						{% for card in cards %}
+							<a  href = "/applianceView/{{card.id}}">
 							<div class="allCards">
 								<p> Model: {{card.modelNumber}} Brand: {{card.brand}} Appliance Type: {{card.applianceType}} </p>
 							</div>
+							</a>
 						{% endfor %}
 				{% endif %}
 		</div>
-		
+	{% endblock %}
 
-<!-- 		
-		<script type="text/javascript">
-			newCard =function makeCard(){
-				var para = document.createElement("p");
-				var text = document.createTextNode("I LOVE YOU");
-				para.appendChild(text);
-				var insert = document.getElementById("cardView");
-				insert.appendChild(para);
-			}
 
-	
-		</script> -->
-{% endblock %}
 		
