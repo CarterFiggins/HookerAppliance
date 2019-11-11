@@ -45,7 +45,7 @@
 			{% for appliance in appliances %}
 				<a href="/">
 					<div class = "allAppliances">
-						<p>Serial Number: {{appliance.serialNumber}}</p>
+						<p class = "small">Serial Number: {{appliance.serialNumber}} ||||  Class: {{appliance.Class}} |||| Unit Cost: ${{appliance.unitCost}}</p>
 					</div>
 				</a>
 			{% endfor %}

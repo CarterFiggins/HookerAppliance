@@ -98,11 +98,13 @@ body{
 	
 }
 
+
 .allCards{
 	background: #A72928;
 	width: 95%;
 	padding: 5px;
 	margin-top: .5%;
+	margin-bottom: .5%;
 	margin-right: 2.7%;
 	margin-left: 2.7%;
 	border: 4px solid black;
@@ -116,21 +118,22 @@ body{
 .allAppliances{
 	background: #0C1B5C;
 	width: 95%;
-	padding: 5px;
+	padding: .01%;
 	margin-top: .5%;
 	margin-right: 2.7%;
 	margin-left: 2.7%;
 	border: 4px solid black;
 	color: white;
 	float: left;
-	font-size: 110%;
+	font-size: 50%%;
 	-webkit-transition-duration: 0.4s; /* Safari */
 	transition-duration: 0.4s;
 }
 
-.cardWaper{
-	margin: 2%
+.small{
+	margin: 0px;
 }
+
 
 .bHooker{
 	padding: 5px;

@@ -72,11 +72,19 @@ def newAppliance(request, card_id):
 
 def init(request):
 	nuke(request)
-	for i in range(5):
-		card = Card(modelNumber = "MODEL" ,brand= "BRAND" ,applianceType = "TYPE" , pub_date= timezone.now())
+	cards = []
+	cards.append(Card(modelNumber = "WED4916FW" ,brand= "Whirlpool" ,applianceType = "Dryer" , pub_date= timezone.now()))
+	cards.append(Card(modelNumber = "MFB2055FRZ" ,brand= "Maytag" ,applianceType = "Refrigerator" , pub_date= timezone.now()))
+	cards.append(Card(modelNumber = "LDE4413ST" ,brand= "LG" ,applianceType = "Electric Range" , pub_date= timezone.now()))
+	cards.append(Card(modelNumber = "MZF34X20DW" ,brand= "Maytag" ,applianceType = "Upright Freezer" , pub_date= timezone.now()))
+
+
+	for card in cards:
 		card.save()
-		appliance = Appliance(card = card, serialNumber = "SERIAL", unitCost = 10.00, Class = "A CLASS", pub_date = timezone.now())
-		appliance.save()
+		for i in range(5):
+			appliance = Appliance(card = card, serialNumber = "R456845", unitCost = 10.00, Class = "A CLASS", pub_date = timezone.now())
+			appliance.save()
+
 	return redirect('/')
 
 def nuke (request):
