@@ -1,5 +1,5 @@
 # HookerAppliance
-To Organize Appliance Stock 
+To Organize Appliance Stock for the HookerAppliance Store
 
 At the job I currently work at, they have hand written cards to keep track of the appliances that come into the store.
 Knowing some programming I have decided to make a program that can keep track of the appliances digitally. I am not sure 
