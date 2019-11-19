@@ -12,6 +12,7 @@ to have a temporary server and database for the website run this code in the com
 Be in the dirctory with manage.py to run these commands
 
 $python manage.py makemigrations
+
 $python manage.py migrate
 
 $python manage.py runserver
