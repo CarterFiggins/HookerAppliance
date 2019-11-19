@@ -17,4 +17,4 @@ $python manage.py migrate
 
 $python manage.py runserver
 
-You will be able to access the site at http://localhost:8000/cards
+You will be able to access the site at http://localhost:8000
