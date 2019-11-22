@@ -44,6 +44,18 @@
 			</div>
 			
 		</div>
+
+		<div class = "cardWaper">
+				{% if appliances %}
+					{% for appliance in appliances %}
+						<a href="/">
+							<div class = "allAppliances">
+								<p class = "small">Model: {{appliance.card.modelNumber}} |||| Serial Number: {{appliance.serialNumber}} ||||  Class: {{appliance.Class}} |||| Unit Cost: ${{appliance.unitCost}}</p>
+							</div>
+						</a>
+					{% endfor %}
+				{% endif %}
+			</div>
 		
 		<script type="text/javascript">
 			

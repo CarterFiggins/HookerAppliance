@@ -41,7 +41,14 @@ def addCards(request):
 
 	
 def lookAppliance(request):
-	return render(request, 'cards/lookAppliance.html' )
+	appliances = Appliance.objects.all()
+
+	context = {
+		'appliances' : appliances,
+	}
+
+
+	return render(request, 'cards/lookAppliance.html', context )
 	
 
 def newCard(request):
