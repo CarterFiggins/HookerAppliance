@@ -19,7 +19,7 @@
 				<div class = " cards" >
 					<span>
 						<label for ="unitCost" > Unit Cost: </label>
-						<input type="text" id="unitCost" name = "unitCost">
+						<input type="number" id="unitCost" name = "unitCost">
 					</span>
 				</div>
 
@@ -28,9 +28,23 @@
 							<label for ="classLevel" > Class: </label>
 							<input type="text" id="classLevel" name = "classLevel">
 						</span>
-					</div>
+				</div>
 			
-				<div>
+				<div class = " cards" >
+						<span>
+							<label for ="color" > Color: </label>
+							<input type="text" id="color" name = "color">
+						</span>
+				</div>
+
+				<div class = " cards" >
+						<span>
+							<label for ="loadDate" > Load Date: </label>
+							<input type="text" id="loadDate" name = "loadDate">
+						</span>
+				</div>
+			
+				
 					
 				<div>
 					<input class = "bHooker" type="submit" value = "Add Appliance">
@@ -45,7 +59,7 @@
 			{% for appliance in appliances %}
 				<a>
 					<div class = "allAppliances">
-						<p class = "small">Serial Number: {{appliance.serialNumber}} ||||  Class: {{appliance.Class}} |||| Unit Cost: ${{appliance.unitCost}}</p>
+						<p class = "small">Serial Number: {{appliance.serialNumber}} ||||  Class: {{appliance.Class}} |||| Unit Cost: {{appliance.unitCost}} |||| Color: {{appliance.color}} |||| Load Date: {{appliance.date}} </p>
 					</div>
 				</a>
 			{% endfor %}
