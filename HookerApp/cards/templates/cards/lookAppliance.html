@@ -36,6 +36,7 @@
 			<form id = 'formAppSearch' method = "post" action="/lookAppliance" >
 				{% csrf_token %}
 				<div class= "lookUp">
+						<span class = "red"> Search by:</span>
 					<select name = "selectSearch" id = "selectSearch" from = 'formAppSearch'>
 						<option value = 'model' {{sModel}} >Model</option>
 						<option value = 'serial' {{sSerial}}>  Serial</option>
