@@ -33,10 +33,8 @@ def lookCards(request):
 	typeCheck = 'unchecked'
 	cards = []
 	if request.POST == {}:
-		print('HELLO')
 		cards = Card.objects.all()
 	else:
-		print('GOT INFO')
 		searched = request.POST['search']
 		if searched == '':
 			cards = Card.objects.all()
@@ -56,7 +54,6 @@ def lookCards(request):
 				typeCheck = 'checked'
 			else: 
 				typeCheck = 'unchecked'
-	
 	
 	context = {
 		'cards' : cards,
@@ -81,13 +78,40 @@ def addCards(request):
 def lookAppliance(request):
 
 	searched = ''
-	appliances = Appliance.objects.filter(serialNumber__contains = searched)
+	appliances = []
+	sModel = ''
+	sSerial = ''
+	sLoadDate = ''
 
+	if request.POST == {}:
+		print('HELLO')
+		appliances = Appliance.objects.filter(serialNumber__contains = searched)
+	else:
+		print("GOT INFO YESSS")
 
+		print('INFO IS: ', request.POST)
+
+		searched = request.POST['searchText']
+		if searched == '':
+			appliances = Appliance.objects.all()
+
+		if(request.POST.get('selectSearch')):
+			option = request.POST['selectSearch']
+			if option == 'model':
+				pass
+			if option == 'serial':
+				appliances = Appliance.objects.filter(serialNumber__contains = searched )
+				sSerial = 'selected'
+			if option == 'loadDate':
+				appliances = Appliance.objects.filter(date__contains = searched)
+				sLoadDate = 'selected'
 
 
 	context = {
 		'appliances' : appliances,
+		'sModel' : sModel,
+		'sSerial' : sSerial,
+		'sLoadDate' : sLoadDate,
 	}
 
 

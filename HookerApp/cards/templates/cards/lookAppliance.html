@@ -33,25 +33,29 @@
 
 			
 			<h1 class = "center">Look up an Appliance</h1>
+			<form id = 'formAppSearch' method = "post" action="/lookAppliance" >
+				{% csrf_token %}
+				<div class= "lookUp">
+					<select name = "selectSearch" id = "selectSearch" from = 'formAppSearch'>
+						<option value = 'model' {{sModel}} >Model</option>
+						<option value = 'serial' {{sSerial}}>  Serial</option>
+						<option value = 'loadDate' {{sLoadDate}} >  Load Date </option>
+					</select> 
+					<input type="text" id = 'searchText' name = "searchText">
+				</div>
+			</form>
+
 		
-			<div class = "lookUp">
-				Model:<input type="text">
-				<br>
-				<br>
-			</div>
-			<div class= "lookUp">
-				Serial:<input type="text">
-			</div>
 			
+
 		</div>
 
 		<div class = "cardWaper">
 				{% if appliances %}
 					{% for appliance in appliances %}
-						<a href="/">
+						<a>
 							<div class = "allAppliances">
-								<p class = "small">Model: {{appliance.card.modelNumber}} |||| Serial Number: {{appliance.serialNumber}} ||||  Class: {{appliance.Class}} |||| Unit Cost: ${{appliance.unitCost}}</p>
-							</div>
+								<p class = "small">Serial Number: {{appliance.serialNumber}} ||||  Class: {{appliance.Class}} |||| Unit Cost: {{appliance.unitCost}} |||| Color: {{appliance.color}} |||| Load Date: {{appliance.date}} </p>							</div>
 						</a>
 					{% endfor %}
 				{% endif %}
