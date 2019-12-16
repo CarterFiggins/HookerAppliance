@@ -98,6 +98,7 @@ def lookAppliance(request):
 		if(request.POST.get('selectSearch')):
 			option = request.POST['selectSearch']
 			if option == 'model':
+				sModel = 'selected'
 				pass
 			if option == 'serial':
 				appliances = Appliance.objects.filter(serialNumber__contains = searched )
