@@ -97,7 +97,16 @@ body{
 	
 	
 }
-
+.homeButton{
+	margin: .2%;
+}
+.delete{
+	color: red;
+	float: right;
+}
+.delete:hover{
+	color: red;
+}
 
 .allCards{
 	background: #A72928;
@@ -207,7 +216,9 @@ p{
 	background-color: white;
 	color: black;
 }
-
+.homeButton:hover{
+	background: white;
+}
 
 .bRed:hover{
 	background-color: white;

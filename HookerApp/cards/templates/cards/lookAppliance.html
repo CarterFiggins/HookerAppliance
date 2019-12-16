@@ -1,33 +1,6 @@
-<!DOCTYPE html>
+{% extends "cards/NavBar.html" %}
+{% block page %}
 
-<html lang ="en">
-
-	<head>
-		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
-		<title>Hooker Appliance</title>	
-		<meta charset="utf-8">
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-		{% load static %}
-		<link rel="stylesheet" href="{%static 'cards/style.css'%}">
-		
-	</head>
-	
-	<body>
-	
-		<div class = "menuBar center">
-		
-			<div>				
-				<img src="{% static 'cards/logo.png'%}" width="200" class="logo">
-				<img src="{% static 'cards/logo.png'%}" width="200" class="logo2">
-				<h1 class = "title"> HOOKER <br>APPLIANCE'S INVENTORY </h1>
-				
-			</div>
-			<div>
-				<a href="{% url 'cards:mainMenu' %}" class="home">HOME </a>
-			</div>
-			
-		</div>
-		
 		
 		<div class ="lookUpBox cardBox center" id ="box" >
 
@@ -54,20 +27,12 @@
 		<div class = "cardWaper">
 				{% if appliances %}
 					{% for appliance in appliances %}
-						<a>
+						<a href = "/applianceDetails/{{appliance.id}}">
 							<div class = "allAppliances">
-								<p class = "small">Serial Number: {{appliance.serialNumber}} ||||  Class: {{appliance.Class}} |||| Unit Cost: {{appliance.unitCost}} |||| Color: {{appliance.color}} |||| Load Date: {{appliance.date}} </p>							</div>
+								<p class = "small">Model: {{appliance.card.modelNumber}} |||| Serial: {{appliance.serialNumber}} ||||  Class: {{appliance.Class}} |||| Color: {{appliance.color}} |||| Load Date: {{appliance.date}} </p>							</div>
 						</a>
 					{% endfor %}
 				{% endif %}
 			</div>
 		
-		<script type="text/javascript">
-			
-
-		
-		</script>
-		
-	</body>
-
-</html>
+{% endblock %}

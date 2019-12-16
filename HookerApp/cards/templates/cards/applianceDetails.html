@@ -1,0 +1,25 @@
+{% extends "cards/NavBar.html" %}
+{% block page %}
+
+	<h1 class = "center">  Modle: "{{appliance.card.modelNumber}}"  Serial: {{appliance.serialNumber}} </h1>
+
+	<div class ="cardBox cards" >
+            <a href = "/deleteAppliance/{{appliance.id}}" class = "delete">Delete Appliance</a>
+            <h1>Appliance Details</h1>
+            <p> Class: {{appliance.Class}} </p>
+            <p>Load Date: {{appliance.date}}</p> 
+            <p> Unit Cost: {{appliance.unitCost}}</p>
+            <p> Color: {{appliance.color}} </p>
+            <p> Date Sold: {{appliance.dateSold}} </p>
+            <p> Purchaser: {{appliance.purchaser}} </p>
+            <p> Ticket Number: {{appliance.ticketNum}}</p>
+            <p> Selling Price: {{appliance.sellingPrice}} </p>
+
+            
+			
+			
+			
+	</div>
+
+
+{% endblock %}

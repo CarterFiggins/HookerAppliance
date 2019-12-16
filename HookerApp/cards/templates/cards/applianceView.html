@@ -4,7 +4,7 @@
 	<h1 class = "center">{{cards.brand}} {{cards.applianceType}} "{{cards.modelNumber}}" </h1>
 
 	<div class ="cardBox cards" >
-			
+			<a href = "/deleteCard/{{cards.id}}" class = "delete">Delete Card</a>
 			<h1 class = "center">Add Appliance</h1>
 			
 			<form action = '/newAppliance/{{cards.id}}/' method = "post">
@@ -57,9 +57,9 @@
 	<div class = "cardWaper">
 		{% if appliances %}
 			{% for appliance in appliances %}
-				<a>
+				<a href = "/applianceDetails/{{appliance.id}}">
 					<span class = "allAppliances">
-						<p class = "small">Serial Number: {{appliance.serialNumber}} ||||  Class: {{appliance.Class}} |||| Unit Cost: {{appliance.unitCost}} |||| Color: {{appliance.color}} |||| Load Date: {{appliance.date}} </p>
+						<p class = "small"> Model: {{appliance.card.modelNumber}} |||| Serial: {{appliance.serialNumber}} ||||  Class: {{appliance.Class}} |||| Color: {{appliance.color}} |||| Load Date: {{appliance.date}} </p>
 					</span>
 				</a>
 			{% endfor %}

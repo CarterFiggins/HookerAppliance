@@ -23,6 +23,12 @@ def applianceView(request, card_id):
 	
 	return render(request, 'cards/applianceView.html',context)
 
+def applianceDetails(request, appliance_id):
+	appliance = get_object_or_404(Appliance,pk = appliance_id)
+	context = {
+		"appliance" : appliance,
+	}
+	return render(request, 'cards/applianceDetails.html',context)
 
 
 def lookCards(request):
@@ -33,11 +39,11 @@ def lookCards(request):
 	typeCheck = 'unchecked'
 	cards = []
 	if request.POST == {}:
-		cards = Card.objects.all()[:20]
+		cards = Card.objects.order_by('-pub_date')[:20]
 	else:
 		searched = request.POST['search']
 		if searched == '':
-			cards = Card.objects.all()[:20]
+			cards = Card.objects.order_by('-pub_date')[:20]
 		else:
 			if request.POST.get('model'):
 				cards += Card.objects.filter(modelNumber__contains = searched )
@@ -66,7 +72,7 @@ def lookCards(request):
 	return render(request, 'cards/lookCards.html', context )
 
 def addCards(request):
-	cards = Card.objects.all()[:20]
+	cards = Card.objects.order_by('-pub_date')[:20]
 	context = {
 		'cards' : cards,
 	}
@@ -84,17 +90,17 @@ def lookAppliance(request):
 	sLoadDate = ''
 
 	if request.POST == {}:
-		appliances = Appliance.objects.filter(serialNumber__contains = searched)[:40]
+		appliances = Appliance.objects.order_by("-pub_date")[:40]
 	else:
 		searched = request.POST['searchText']
 		if searched == '':
-			appliances = Appliance.objects.all()[:40]
+			appliances = Appliance.objects.order_by('-pub_date')[:40]
 		else:
 			if(request.POST.get('selectSearch')):
 				option = request.POST['selectSearch']
 				if option == 'model':
 					sModel = 'selected'
-					pass
+					appliances = Appliance.objects.filter(card__modelNumber__contains = searched)
 				if option == 'serial':
 					appliances = Appliance.objects.filter(serialNumber__contains = searched )
 					sSerial = 'selected'
@@ -135,8 +141,16 @@ def newAppliance(request, card_id):
 		saveAppliance = Appliance(card = card, serialNumber = serial, unitCost= unitCost, Class= classLevel, pub_date = timezone.now(), color = color, date = loadDate)
 		saveAppliance.save()
 	return redirect('/applianceView/' + str(card_id))
-		
 
+def deleteCard(request, card_id):
+	card = get_object_or_404(Card, pk=card_id)
+	card.delete()
+	return redirect('/addCards')		
+
+def deleteAppliance(request,appliance_id):
+	appliance = get_object_or_404(Appliance, pk=appliance_id)
+	appliance.delete()
+	return redirect('/lookAppliance')
 
 def init(request):
 	nuke(request)
@@ -153,7 +167,7 @@ def init(request):
 	for card in cards:
 		card.save()
 		for i in range(5):
-			appliance = Appliance(card = card, serialNumber = "R456845"+str(num)+str(i), unitCost = 10.00, Class = "A CLASS", pub_date = timezone.now(), date = "11/26/19", color = "Blue" )
+			appliance = Appliance(card = card, serialNumber = "R456845"+str(i), unitCost = 10.00, Class = "A CLASS", pub_date = timezone.now(), date = "11/26/19", color = "Blue" )
 			appliance.save()
 
 	return redirect('/')
