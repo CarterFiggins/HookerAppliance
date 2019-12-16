@@ -101,11 +101,11 @@ body{
 
 .allCards{
 	background: #A72928;
-	width: 95%;
-	padding: 5px;
+	width: 45.7%;
+	padding: .7%;
 	margin-top: .5%;
 	margin-bottom: .5%;
-	margin-right: 2.7%;
+	margin-right: 0.7%;
 	margin-left: 2.7%;
 	border: 4px solid black;
 	color: white;
@@ -114,24 +114,29 @@ body{
 	-webkit-transition-duration: 0.4s; /* Safari */
 	transition-duration: 0.4s;
 }
+p{
+	margin: 0px;
+}
 
 .allAppliances{
 	background: #0C1B5C;
-	width: 95%;
+	width: 45.7%;
 	padding: .01%;
 	margin-top: .5%;
-	margin-right: 2.7%;
+	margin-right: 0.7%;
 	margin-left: 2.7%;
 	border: 4px solid black;
 	color: white;
 	float: left;
-	font-size: 50%%;
+	font-size: 100%;
 	-webkit-transition-duration: 0.4s; /* Safari */
 	transition-duration: 0.4s;
 }
 
 .small{
-	margin: 0px;
+	margin-left: 2%;
+	margin-bottom: 0px;
+		
 }
 
 

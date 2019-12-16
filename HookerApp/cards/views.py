@@ -8,11 +8,11 @@ from django.urls import reverse
 # TODO: Add an edit button for each card and appliance
 # TODO: Add searching code
 
-
+# Main menu view
 def mainMenu(request):
 	return render(request, 'cards/MainCards.html')
 
-		
+# view for what appliances are on thecard	
 def applianceView(request, card_id):
 	cards = get_object_or_404(Card, pk=card_id)
 	appliances = Appliance.objects.filter(card = cards)
@@ -24,7 +24,7 @@ def applianceView(request, card_id):
 	return render(request, 'cards/applianceView.html',context)
 
 
-# has same one in it duplicets
+
 def lookCards(request):
 
 	searched = ''
@@ -33,11 +33,11 @@ def lookCards(request):
 	typeCheck = 'unchecked'
 	cards = []
 	if request.POST == {}:
-		cards = Card.objects.all()
+		cards = Card.objects.all()[:20]
 	else:
 		searched = request.POST['search']
 		if searched == '':
-			cards = Card.objects.all()
+			cards = Card.objects.all()[:20]
 		else:
 			if request.POST.get('model'):
 				cards += Card.objects.filter(modelNumber__contains = searched )
@@ -66,7 +66,7 @@ def lookCards(request):
 	return render(request, 'cards/lookCards.html', context )
 
 def addCards(request):
-	cards = Card.objects.all()
+	cards = Card.objects.all()[:20]
 	context = {
 		'cards' : cards,
 	}
@@ -84,28 +84,23 @@ def lookAppliance(request):
 	sLoadDate = ''
 
 	if request.POST == {}:
-		print('HELLO')
-		appliances = Appliance.objects.filter(serialNumber__contains = searched)
+		appliances = Appliance.objects.filter(serialNumber__contains = searched)[:40]
 	else:
-		print("GOT INFO YESSS")
-
-		print('INFO IS: ', request.POST)
-
 		searched = request.POST['searchText']
 		if searched == '':
-			appliances = Appliance.objects.all()
-
-		if(request.POST.get('selectSearch')):
-			option = request.POST['selectSearch']
-			if option == 'model':
-				sModel = 'selected'
-				pass
-			if option == 'serial':
-				appliances = Appliance.objects.filter(serialNumber__contains = searched )
-				sSerial = 'selected'
-			if option == 'loadDate':
-				appliances = Appliance.objects.filter(date__contains = searched)
-				sLoadDate = 'selected'
+			appliances = Appliance.objects.all()[:40]
+		else:
+			if(request.POST.get('selectSearch')):
+				option = request.POST['selectSearch']
+				if option == 'model':
+					sModel = 'selected'
+					pass
+				if option == 'serial':
+					appliances = Appliance.objects.filter(serialNumber__contains = searched )
+					sSerial = 'selected'
+				if option == 'loadDate':
+					appliances = Appliance.objects.filter(date__contains = searched)
+					sLoadDate = 'selected'
 
 
 	context = {
@@ -147,17 +142,18 @@ def init(request):
 	nuke(request)
 	cards = []
 	
-	for i in range(10):
+	
+	for i in range(50):
 		cards.append(Card(modelNumber = "WED4916FW" ,brand= "Whirlpool" ,applianceType = "Dryer" , pub_date= timezone.now()))
 		cards.append(Card(modelNumber = "MFB2055FRZ" ,brand= "Maytag" ,applianceType = "Refrigerator" , pub_date= timezone.now()))
 		cards.append(Card(modelNumber = "LDE4413ST" ,brand= "LG" ,applianceType = "Electric Range" , pub_date= timezone.now()))
 		cards.append(Card(modelNumber = "MZF34X20DW" ,brand= "Maytag" ,applianceType = "Upright Freezer" , pub_date= timezone.now()))
-
+		
 
 	for card in cards:
 		card.save()
 		for i in range(5):
-			appliance = Appliance(card = card, serialNumber = "R456845", unitCost = 10.00, Class = "A CLASS", pub_date = timezone.now(), date = "11/26/19", color = "Blue" )
+			appliance = Appliance(card = card, serialNumber = "R456845"+str(num)+str(i), unitCost = 10.00, Class = "A CLASS", pub_date = timezone.now(), date = "11/26/19", color = "Blue" )
 			appliance.save()
 
 	return redirect('/')

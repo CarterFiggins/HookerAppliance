@@ -58,9 +58,9 @@
 		{% if appliances %}
 			{% for appliance in appliances %}
 				<a>
-					<div class = "allAppliances">
+					<span class = "allAppliances">
 						<p class = "small">Serial Number: {{appliance.serialNumber}} ||||  Class: {{appliance.Class}} |||| Unit Cost: {{appliance.unitCost}} |||| Color: {{appliance.color}} |||| Load Date: {{appliance.date}} </p>
-					</div>
+					</span>
 				</a>
 			{% endfor %}
 		{% endif %}
