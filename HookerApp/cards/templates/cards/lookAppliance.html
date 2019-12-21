@@ -26,13 +26,30 @@
 
 		<div class = "cardWaper">
 				{% if appliances %}
-					{% for appliance in appliances %}
-						<a href = "/applianceDetails/{{appliance.id}}">
-							<div class = "allAppliances">
-								<p class = "small">Model: {{appliance.card.modelNumber}} |||| Serial: {{appliance.serialNumber}} ||||  Class: {{appliance.Class}} |||| Color: {{appliance.color}} |||| Load Date: {{appliance.date}} </p>							</div>
-						</a>
-					{% endfor %}
-				{% endif %}
+			<table style="width:100%">
+			  <tr>
+				<th>Model</th>
+				<th>Serial</th>
+				<th>Class</th>
+				<th>Color</th>
+				<th>Load Date</th>
+			  </tr>
+			{% for appliance in appliances %}	
+					<div>
+					
+						  <tr>
+						
+							<td><a href = "/applianceView/{{appliance.card.id}}">{{appliance.card.modelNumber}}</a></td>
+							<td><a href = "/applianceDetails/{{appliance.id}}">{{appliance.serialNumber}}</a></td>
+							<td> {{appliance.Class}}</td>
+							<td> {{appliance.color}}</td>
+							<td> {{appliance.date}} </td>
+						  </tr>
+					</div>
+				
+			{% endfor %}
+			</table>
+		{% endif %}
 			</div>
 		
 {% endblock %}
