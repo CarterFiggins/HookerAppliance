@@ -124,9 +124,14 @@ def newCard(request):
 	model = request.POST['model']
 	brand = request.POST['brand']
 	applianceType = request.POST['type']
+	modelCard = Card.objects.filter(modelNumber=model)
+
 	if(model and brand and applianceType ):
-		saveCard = Card(modelNumber = model ,brand= brand ,applianceType = applianceType, pub_date= timezone.now())
-		saveCard.save()
+		if(not modelCard):
+			saveCard = Card(modelNumber = model ,brand= brand ,applianceType = applianceType, pub_date= timezone.now())
+			saveCard.save()
+		else:
+			print("ERROR Card's model already exists")
 	return HttpResponseRedirect('/addCards')
 
 
@@ -137,9 +142,13 @@ def newAppliance(request, card_id):
 	classLevel = request.POST['classLevel']
 	color = request.POST['color']
 	loadDate = request.POST['loadDate']
+	serialAppliance = Appliance.objects.filter(serialNumber = serial)
 	if(serial and unitCost and classLevel):
-		saveAppliance = Appliance(card = card, serialNumber = serial, unitCost= unitCost, Class= classLevel, pub_date = timezone.now(), color = color, date = loadDate)
-		saveAppliance.save()
+		if(not serialAppliance):
+			saveAppliance = Appliance(card = card, serialNumber = serial, unitCost= unitCost, Class= classLevel, pub_date = timezone.now(), color = color, date = loadDate)
+			saveAppliance.save()
+		else:
+			print("ERROR Appliance's serial already exists")
 	return redirect('/applianceView/' + str(card_id))
 
 def deleteCard(request, card_id):
