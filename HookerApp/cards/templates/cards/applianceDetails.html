@@ -6,18 +6,27 @@
 	<div class ="cardBox cards" >
             <a href = "/deleteAppliance/{{appliance.id}}" class = "delete">Delete Appliance</a>
 		<h1>Appliance Details   <a> <span class = "editButton">Edit</span> </a></h1>
-            <p> Class: {{appliance.Class}} </p>
-            <p>Load Date: {{appliance.date}}</p> 
-            <p> Unit Cost: {{appliance.unitCost}}</p>
-            <p> Color: {{appliance.color}} </p>
-            <p> Date Sold: {{appliance.dateSold}} </p>
-            <p> Purchaser: {{appliance.purchaser}} </p>
-            <p> Ticket Number: {{appliance.ticketNum}}</p>
-            <p> Selling Price: {{appliance.sellingPrice}} </p>
-
+            <form action = '/newAppliance/{{cards.id}}/' method = "post">
+                <span> Class: {{appliance.Class}} </span> <input type="text" id="class" name = "class">
+                <br>
+                <span>Load Date: {{appliance.date}}</span> <input type="text" id="loadDate" name = "loadDate">
+                <br>
+                <span> Unit Cost: {{appliance.unitCost}}</span> <input type="text" id="cost" name = "cost">
+                <br>
+                <span> Color: {{appliance.color}} </span> <input type="text" id="color" name = "color">
+                <br>
+                <span> Date Sold: {{appliance.dateSold}} </span> <input type="text" id="dateSold" name = "dateSold">
+                <br>
+                <span> Purchaser: {{appliance.purchaser}} </span> <input type="text" id="purchaser" name = "purchaser">
+                <br>
+                <span> Ticket Number: {{appliance.ticketNum}}</span> <input type="text" id="ticketNum" name = "ticketNum">
+                <br>
+                <span> Selling Price: {{appliance.sellingPrice}} </span> <input type="text" id="sellingPrice" name = "sellingPrice">
+                <br>
+                <input type = "submit" id = "editSubmit" name = "editSubmit" value = "Edit Appliance"> 
+            </form>
             
-			
-			
+						
 			
 	</div>
 
