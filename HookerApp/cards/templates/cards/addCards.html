@@ -39,15 +39,30 @@
 		</div>
 
 
-		<div class = "cardWaper">
+		<div class = "cardWaper columnView">
 				{% if cards %}
+					<table style="width:100%">
+					  <tr>
+						<th>Model</th>
+						<th>Brand</th>
+						<th>Appliance Type</th>
+						
+					  </tr>
+					  
+					 
 						{% for card in cards %}
-							<a  href = "/applianceView/{{card.id}}">
-							<div class="allCards">
-								<p> Model: {{card.modelNumber}} Brand: {{card.brand}} Appliance Type: {{card.applianceType}} </p>
+							<div>
+					
+							  <tr>
+							
+								<td><a href = "/applianceView/{{card.id}}"><div class = 'allCards'>{{card.modelNumber}}</div></a></td>
+								<td> {{card.brand}}</td>
+								<td> {{card.applianceType}}</td>
+								
+							  </tr>
 							</div>
-							</a>
 						{% endfor %}
+					</table>
 				{% endif %}
 		</div>
 		<br>
