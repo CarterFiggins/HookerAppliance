@@ -54,23 +54,20 @@
 			
 	</div>
 
-	<div class = "cardWaper">
+	<div class = "cardWaper columnView">
 		{% if appliances %}
 			<table style="width:100%">
 			  <tr>
-				<th>Model</th>
 				<th>Serial</th>
 				<th>Class</th>
 				<th>Color</th>
 				<th>Load Date</th>
 			  </tr>
 			{% for appliance in appliances %}	
-					<div>
+					<div  >
 					
 						  <tr>
-						
-							<td><a href = "/applianceDetails/{{appliance.id}}">{{appliance.card.modelNumber}}</a></td>
-							<td><a href = "/applianceDetails/{{appliance.id}}">{{appliance.serialNumber}}</a></td>
+							<td ><a href = "/applianceDetails/{{appliance.id}}"><div class = 'allAppliances'>{{appliance.serialNumber}} </div></a></td>
 							<td> {{appliance.Class}}</td>
 							<td> {{appliance.color}}</td>
 							<td> {{appliance.date}} </td>

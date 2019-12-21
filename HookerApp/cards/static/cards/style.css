@@ -51,6 +51,11 @@ body{
 	
 
 }
+.columnView{
+	margin-left: 2.5%;
+	
+	color: bule;
+}
 
 .ticket{
 	padding: 5px;
@@ -141,6 +146,8 @@ p{
 	color: white;
 	float: left;
 	font-size: 100%;
+	text-align: center;
+	
 	-webkit-transition-duration: 0.4s; /* Safari */
 	transition-duration: 0.4s;
 }
