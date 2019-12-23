@@ -19,7 +19,7 @@
 				<div class = " cards" >
 					<span>
 						<label for ="unitCost" > Unit Cost: </label>
-						<input type="number" id="unitCost" name = "unitCost">
+						<input type="number" step = ".01" id="unitCost" name = "unitCost">
 					</span>
 				</div>
 
@@ -67,7 +67,11 @@
 					<div  >
 					
 						  <tr>
-							<td ><a href = "/applianceDetails/{{appliance.id}}"><div class = 'allAppliances'>{{appliance.serialNumber}} </div></a></td>
+							{% if appliance.scrapped %}
+								<td ><a href = "/applianceDetails/{{appliance.id}}"><div class = 'allAppliances'>{{appliance.serialNumber}} <span class = "redSmall"> Scrapped </span></span> </div></a></td>
+							{% else %}
+								<td ><a href = "/applianceDetails/{{appliance.id}}"><div class = 'allAppliances'>{{appliance.serialNumber}} </div></a></td>
+							{% endif %}
 							<td> {{appliance.Class}}</td>
 							<td> {{appliance.color}}</td>
 							<td> {{appliance.date}} </td>

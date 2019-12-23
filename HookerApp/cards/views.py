@@ -88,6 +88,8 @@ def lookAppliance(request):
 	sModel = ''
 	sSerial = ''
 	sLoadDate = ''
+	scrapCheck = ''
+	showScrapped = False
 
 	if request.POST == {}:
 		appliances = Appliance.objects.order_by("-pub_date")[:40]
@@ -95,6 +97,13 @@ def lookAppliance(request):
 		searched = request.POST['searchText']
 		if searched == '':
 			appliances = Appliance.objects.order_by('-pub_date')[:40]
+			if(request.POST.get('scrap')):
+				showScrapped = True
+				scrapCheck = "checked"
+			
+			else:
+				showScrapped = False
+				scrapCheck = "unchecked"
 		else:
 			if(request.POST.get('selectSearch')):
 				option = request.POST['selectSearch']
@@ -107,13 +116,21 @@ def lookAppliance(request):
 				if option == 'loadDate':
 					appliances = Appliance.objects.filter(date__contains = searched)
 					sLoadDate = 'selected'
-
+			if(request.POST.get('scrap')):
+				showScrapped = True
+				scrapCheck = "checked"
+			
+			else:
+				showScrapped = False
+				scrapCheck = "unchecked"
 
 	context = {
 		'appliances' : appliances,
 		'sModel' : sModel,
 		'sSerial' : sSerial,
 		'sLoadDate' : sLoadDate,
+		'scrapCheck' : scrapCheck,
+		'showScrapped' : showScrapped,
 	}
 
 
@@ -151,6 +168,35 @@ def newAppliance(request, card_id):
 			print("ERROR Appliance's serial already exists")
 	return redirect('/applianceView/' + str(card_id))
 
+def editAppliance(request, appliance_id):
+	appliance = get_object_or_404(Appliance, pk=appliance_id)
+	
+	if(request.POST['serialNumber'] != ''):
+		appliance.serialNumber = request.POST['serialNumber']
+	if(request.POST['class'] != ''):
+		appliance.Class = request.POST['class']
+	if(request.POST['loadDate'] != ''):
+		appliance.date = request.POST['loadDate']
+	if(request.POST['cost'] != ''):
+		appliance.unitCost = request.POST['cost']
+	if(request.POST['color'] != ''):
+		appliance.color = request.POST['color']
+	if(request.POST['dateSold'] != ''):
+		appliance.dateSold = request.POST['dateSold']
+	if(request.POST['purchaser'] != ''):
+		appliance.purchaser = request.POST['purchaser']
+	if(request.POST['ticketNum'] != ''):
+		appliance.ticketNum = request.POST['ticketNum']
+	if(request.POST['sellingPrice'] != ''):
+		appliance.sellingPrice = request.POST['sellingPrice']
+	if(request.POST.get('scrap')):
+		appliance.scrapped = True
+	else:
+		appliance.scrapped = False
+
+	appliance.save()
+	return redirect('/applianceDetails/' + str(appliance_id))
+
 def deleteCard(request, card_id):
 	card = get_object_or_404(Card, pk=card_id)
 	card.delete()
@@ -166,7 +212,7 @@ def init(request):
 	cards = []
 	
 	
-	for i in range(100):
+	for i in range(20):
 		cards.append(Card(modelNumber = "WED4916FW" ,brand= "Whirlpool" ,applianceType = "Dryer" , pub_date= timezone.now()))
 		cards.append(Card(modelNumber = "MFB2055FRZ" ,brand= "Maytag" ,applianceType = "Refrigerator" , pub_date= timezone.now()))
 		cards.append(Card(modelNumber = "LDE4413ST" ,brand= "LG" ,applianceType = "Electric Range" , pub_date= timezone.now()))
@@ -176,8 +222,14 @@ def init(request):
 	for card in cards:
 		card.save()
 		for i in range(5):
-			appliance = Appliance(card = card, serialNumber = "R456845"+str(i), unitCost = 10.00, Class = "A CLASS", pub_date = timezone.now(), date = "11/26/19", color = "Blue" )
-			appliance.save()
+			if(i%2==0):
+				appliance = Appliance(card = card, serialNumber = "W789789"+str(i), unitCost = 100.00, Class = "A", pub_date = timezone.now(), date = "1222A", color = "Stanless Steel", scraped= True )
+				appliance.save()
+			
+			else:
+				appliance = Appliance(card = card, serialNumber = "R456845"+str(i), unitCost = 10.00, Class = "A", pub_date = timezone.now(), date = "11/26/19", color = "Blue" )
+				appliance.save()
+			
 
 	return redirect('/')
 

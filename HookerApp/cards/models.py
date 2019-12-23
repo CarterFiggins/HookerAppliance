@@ -27,6 +27,7 @@ class Appliance(models.Model):
     purchaser = models.CharField(max_length=200)
     ticketNum = models.IntegerField(default = 0)
     sellingPrice = models.FloatField(default=0)
+    scrapped = models.BooleanField(default= False)
     pub_date = models.DateTimeField('date published')
     def __str__(self):
         return self.serialNumber

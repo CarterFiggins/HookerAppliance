@@ -4,27 +4,58 @@
 	<h1 class = "center">  Modle: "{{appliance.card.modelNumber}}"  Serial: {{appliance.serialNumber}} </h1>
 
 	<div class ="cardBox cards" >
-            <a href = "/deleteAppliance/{{appliance.id}}" class = "delete">Delete Appliance</a>
-		<h1>Appliance Details   <a> <span class = "editButton">Edit</span> </a></h1>
-            <form action = '/newAppliance/{{cards.id}}/' method = "post">
-                <span> Class: {{appliance.Class}} </span> <input type="text" id="class" name = "class">
-                <br>
-                <span>Load Date: {{appliance.date}}</span> <input type="text" id="loadDate" name = "loadDate">
-                <br>
-                <span> Unit Cost: {{appliance.unitCost}}</span> <input type="text" id="cost" name = "cost">
-                <br>
-                <span> Color: {{appliance.color}} </span> <input type="text" id="color" name = "color">
-                <br>
-                <span> Date Sold: {{appliance.dateSold}} </span> <input type="text" id="dateSold" name = "dateSold">
-                <br>
-                <span> Purchaser: {{appliance.purchaser}} </span> <input type="text" id="purchaser" name = "purchaser">
-                <br>
-                <span> Ticket Number: {{appliance.ticketNum}}</span> <input type="text" id="ticketNum" name = "ticketNum">
-                <br>
-                <span> Selling Price: {{appliance.sellingPrice}} </span> <input type="text" id="sellingPrice" name = "sellingPrice">
-                <br>
-                <input type = "submit" id = "editSubmit" name = "editSubmit" value = "Edit Appliance"> 
-            </form>
+        <a href = "/deleteAppliance/{{appliance.id}}" class = "delete">Delete Appliance</a>
+        <h1>Appliance Details   <a> <span class = "editButton">Edit</span> </a></h1> 
+        {% if appliance.scrapped %}
+            <span class = "redBig">Scrapped</span>
+
+        {% endif %}
+        <form action = '/editAppliance/{{appliance.id}}/' method = "post">
+            {% csrf_token %}
+            <span> Serial Number: {{appliance.serialNumber}} </span>
+            <br>
+            <input type="text" id="serialNumber" name = "serialNumber" placeholder = "Serial Number">
+            <br>
+            <span> Class: {{appliance.Class}} </span> 
+            <br>
+            <input type="text" id="class" name = "class" value placeholder = "Class" >
+            <br>
+            <span>Load Date: {{appliance.date}}</span> 
+            <br>
+            <input type="text" id="loadDate" name = "loadDate" placeholder = "Load Date">
+            <br>
+            <span> Unit Cost: {{appliance.unitCost}}</span> 
+            <br>
+            <input type="number" step = ".01" id="cost" name = "cost" placeholder ="Unit Cost">
+            <br>
+            <span> Color: {{appliance.color}} </span> 
+            <br>
+            <input type="text" id="color" name = "color" placeholder = "Color">
+            <br>
+            <span> Date Sold: {{appliance.dateSold}} </span> 
+            <br>
+            <input type="text" id="dateSold" name = "dateSold" placeholder = "Date Sold">
+            <br>
+            <span> Purchaser: {{appliance.purchaser}} </span> 
+            <br>
+            <input type="text" id="purchaser" name = "purchaser" placeholder = "Purchaser">
+            <br>
+            <span> Ticket Number: {{appliance.ticketNum}}</span> 
+            <br>
+            <input type="text" id="ticketNum" name = "ticketNum" placeholder ="Ticket Number">
+            <br>
+            <span> Selling Price: {{appliance.sellingPrice}} </span> 
+            <br>
+            <input type="number" step = ".01" id="sellingPrice" name = "sellingPrice" placeholder = "Selling Price">
+            <br>
+            {% if appliance.scrapped %}
+            Scrapped <input  type = "checkbox" id ="scrap" name = "scrap" value = "scrap" checked>
+            {% else %}
+            Scrapped <input  type = "checkbox" id ="scrap" name = "scrap" value = "scrap" unchecked>
+            {% endif %}
+            <br>
+            <input type = "submit" id = "editSubmit" name = "editSubmit" value = "Save Changes"> 
+        </form>
             
 						
 			

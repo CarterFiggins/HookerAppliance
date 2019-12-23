@@ -37,14 +37,11 @@
 					  
 					 
 						{% for card in cards %}
-							<div>
-					
+							<div>					
 							  <tr>
-							
 								<td><a href = "/applianceView/{{card.id}}"><div class = 'allCards'>{{card.modelNumber}}</div></a></td>
 								<td> {{card.brand}}</td>
 								<td> {{card.applianceType}}</td>
-								
 							  </tr>
 							</div>
 						{% endfor %}

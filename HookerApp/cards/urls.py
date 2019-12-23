@@ -16,4 +16,5 @@ urlpatterns = [
 	path('deleteCard/<int:card_id>/', views.deleteCard, name = 'deleteCard'),
 	path('applianceDetails/<int:appliance_id>/', views.applianceDetails, name = 'applianceDetails'),
 	path('deleteAppliance/<int:appliance_id>/', views.deleteAppliance, name = 'deleteAppliance'),
+	path('editAppliance/<int:appliance_id>/', views.editAppliance, name ='editAppliance' ),
 ]

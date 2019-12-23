@@ -4,9 +4,8 @@
 		
 		<div class ="lookUpBox cardBox center" id ="box" >
 
-			
 			<h1 class = "center">Look up an Appliance</h1>
-			<form id = 'formAppSearch' method = "post" action="/lookAppliance" >
+			<form id = 'searchForm' method = "post" action="/lookAppliance" >
 				{% csrf_token %}
 				<div class= "lookUp">
 						<span class = "red"> Search by:</span>
@@ -16,6 +15,7 @@
 						<option value = 'loadDate' {{sLoadDate}} >  Load Date </option>
 					</select> 
 					<input type="text" id = 'searchText' name = "searchText">
+					Include Scraps <input class = "coolCheck" type= "checkbox" id = "scrap" name = "scrap" value = "scrap" {{scrapCheck}}>
 				</div>
 			</form>
 
@@ -35,16 +35,26 @@
 				<th>Load Date</th>
 			  </tr>
 			{% for appliance in appliances %}	
-					<div>
-					
-						  <tr>
-						
-							<td><a href = "/applianceView/{{appliance.card.id}}"><div class = 'allCards'>{{appliance.card.modelNumber}}</div></a></td>
-							<td><a href = "/applianceDetails/{{appliance.id}}"><div class = 'allAppliances'>{{appliance.serialNumber}}</div></a></td>
-							<td> {{appliance.Class}}</td>
-							<td> {{appliance.color}}</td>
-							<td> {{appliance.date}} </td>
-						  </tr>
+					<div>	
+							{% if appliance.scrapped and showScrapped %}				
+								<tr>
+									<td><a href = "/applianceView/{{appliance.card.id}}"><div class = 'allCards'>{{appliance.card.modelNumber}}</div></a></td>
+									<td ><a href = "/applianceDetails/{{appliance.id}}"><div class = 'allAppliances'>{{appliance.serialNumber}} <span class = "redSmall"> Scrapped </span></span> </div></a></td>
+									<td> {{appliance.Class}}</td>
+									<td> {{appliance.color}}</td>
+									<td> {{appliance.date}} </td>
+								</tr>
+							{% else %}
+								{% if not appliance.scrapped %}
+								<tr>
+									<td><a href = "/applianceView/{{appliance.card.id}}"><div class = 'allCards'>{{appliance.card.modelNumber}}</div></a></td>
+									<td ><a href = "/applianceDetails/{{appliance.id}}"><div class = 'allAppliances'>{{appliance.serialNumber}} </div></a></td>							
+									<td> {{appliance.Class}}</td>
+									<td> {{appliance.color}}</td>
+									<td> {{appliance.date}} </td>
+								</tr>
+								{% endif %}
+							{% endif %}
 					</div>
 				
 			{% endfor %}
