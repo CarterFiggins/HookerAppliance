@@ -26,4 +26,43 @@
 
         {% block page %} {% endblock %}
     </body>
+    <script>
+        function editAppliance(){
+            
+            serial = document.getElementById("serialNumber");
+            if(serial.type == "hidden"){
+                text = "text"
+                number = "number"
+                checkbox = "checkbox"
+                submit = "submit"
+            }
+            
+
+            
+            document.getElementById("serialNumber").type = text;
+            document.getElementById("class").type = text;
+            document.getElementById("loadDate").type = text;
+            document.getElementById("cost").type = number;            
+            document.getElementById("color").type = text;            
+            document.getElementById("dateSold").type = text;            
+            document.getElementById("purchaser").type = text;            
+            document.getElementById("ticketNum").type = text;            
+            document.getElementById("sellingPrice").type = number;            
+            document.getElementById("scrap").type = checkbox;            
+            document.getElementById("editSubmit").type = submit;
+            document.getElementById("scrapWords").innerHTML  = "Scrapped"          
+            
+        }
+
+        function checkHidden(type){
+            if(type == hidden){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+
+    </script>
+
 </html>

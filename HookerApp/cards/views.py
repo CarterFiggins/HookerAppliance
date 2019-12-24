@@ -208,28 +208,40 @@ def deleteAppliance(request,appliance_id):
 	return redirect('/lookAppliance')
 
 def init(request):
+	print('Nuking')
 	nuke(request)
 	cards = []
+	print("nuke Done")
 	
-	
-	for i in range(20):
-		cards.append(Card(modelNumber = "WED4916FW" ,brand= "Whirlpool" ,applianceType = "Dryer" , pub_date= timezone.now()))
-		cards.append(Card(modelNumber = "MFB2055FRZ" ,brand= "Maytag" ,applianceType = "Refrigerator" , pub_date= timezone.now()))
-		cards.append(Card(modelNumber = "LDE4413ST" ,brand= "LG" ,applianceType = "Electric Range" , pub_date= timezone.now()))
-		cards.append(Card(modelNumber = "MZF34X20DW" ,brand= "Maytag" ,applianceType = "Upright Freezer" , pub_date= timezone.now()))
-		
+	print("making Cards")
+	for i in range(1000):
+		whirlPool = Card(modelNumber = "WED4916FW" ,brand= "Whirlpool" ,applianceType = "Dryer" , pub_date= timezone.now())
+		maytag = Card(modelNumber = "MFB2055FRZ" ,brand= "Maytag" ,applianceType = "Refrigerator" , pub_date= timezone.now())
+		lg = Card(modelNumber = "LDE4413ST" ,brand= "LG" ,applianceType = "Electric Range" , pub_date= timezone.now())
+		freezer = Card(modelNumber = "MZF34X20DW" ,brand= "Maytag" ,applianceType = "Upright Freezer" , pub_date= timezone.now())
+		whirlPool.save()
+		maytag.save()
+		lg.save()
+		freezer.save()
+		cards.append(whirlPool)
+		cards.append(maytag)
+		cards.append(lg)
+		cards.append(freezer)
 
+
+	print("Cards Done")
+
+	print("now Appliances")
 	for card in cards:
-		card.save()
 		for i in range(5):
 			if(i%2==0):
-				appliance = Appliance(card = card, serialNumber = "W789789"+str(i), unitCost = 100.00, Class = "A", pub_date = timezone.now(), date = "1222A", color = "Stanless Steel", scraped= True )
+				appliance = Appliance(card = card, serialNumber = "W789789"+str(i), unitCost = 100.00, Class = "A", pub_date = timezone.now(), date = "1222A", color = "Stanless Steel", scrapped= True )
 				appliance.save()
 			
 			else:
 				appliance = Appliance(card = card, serialNumber = "R456845"+str(i), unitCost = 10.00, Class = "A", pub_date = timezone.now(), date = "11/26/19", color = "Blue" )
 				appliance.save()
-			
+	print("ALL DONE")
 
 	return redirect('/')
 

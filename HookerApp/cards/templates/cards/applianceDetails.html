@@ -5,56 +5,39 @@
 
 	<div class ="cardBox cards" >
         <a href = "/deleteAppliance/{{appliance.id}}" class = "delete">Delete Appliance</a>
-        <h1>Appliance Details   <a> <span class = "editButton">Edit</span> </a></h1> 
+        <h1>Appliance Details   <a> <span onclick = "editAppliance()" class = "editButton">Edit</span> </a></h1> 
         {% if appliance.scrapped %}
             <span class = "redBig">Scrapped</span>
 
         {% endif %}
         <form action = '/editAppliance/{{appliance.id}}/' method = "post">
             {% csrf_token %}
-            <span> Serial Number: {{appliance.serialNumber}} </span>
-            <br>
-            <input type="text" id="serialNumber" name = "serialNumber" placeholder = "Serial Number">
-            <br>
-            <span> Class: {{appliance.Class}} </span> 
-            <br>
-            <input type="text" id="class" name = "class" value placeholder = "Class" >
-            <br>
-            <span>Load Date: {{appliance.date}}</span> 
-            <br>
-            <input type="text" id="loadDate" name = "loadDate" placeholder = "Load Date">
-            <br>
-            <span> Unit Cost: {{appliance.unitCost}}</span> 
-            <br>
-            <input type="number" step = ".01" id="cost" name = "cost" placeholder ="Unit Cost">
-            <br>
-            <span> Color: {{appliance.color}} </span> 
-            <br>
-            <input type="text" id="color" name = "color" placeholder = "Color">
-            <br>
-            <span> Date Sold: {{appliance.dateSold}} </span> 
-            <br>
-            <input type="text" id="dateSold" name = "dateSold" placeholder = "Date Sold">
-            <br>
-            <span> Purchaser: {{appliance.purchaser}} </span> 
-            <br>
-            <input type="text" id="purchaser" name = "purchaser" placeholder = "Purchaser">
-            <br>
-            <span> Ticket Number: {{appliance.ticketNum}}</span> 
-            <br>
-            <input type="text" id="ticketNum" name = "ticketNum" placeholder ="Ticket Number">
-            <br>
-            <span> Selling Price: {{appliance.sellingPrice}} </span> 
-            <br>
-            <input type="number" step = ".01" id="sellingPrice" name = "sellingPrice" placeholder = "Selling Price">
+            <p> Serial Number: {{appliance.serialNumber}} </p>
+            <input type="hidden" id="serialNumber" name = "serialNumber" placeholder = "Serial Number">
+            <p> Class: {{appliance.Class}} </p> 
+            <input type="hidden" id="class" name = "class" value placeholder = "Class" >
+            <p>Load Date: {{appliance.date}}</p> 
+            <input type="hidden" id="loadDate" name = "loadDate" placeholder = "Load Date">
+            <p> Unit Cost: {{appliance.unitCost}}</p> 
+            <input type="hidden" step = ".01" id="cost" name = "cost" placeholder ="Unit Cost">
+            <p> Color: {{appliance.color}} </p> 
+            <input type="hidden" id="color" name = "color" placeholder = "Color">
+            <p> Date Sold: {{appliance.dateSold}} </p> 
+            <input type="hidden" id="dateSold" name = "dateSold" placeholder = "Date Sold">
+            <p> Purchaser: {{appliance.purchaser}} </p> 
+            <input type="hidden" id="purchaser" name = "purchaser" placeholder = "Purchaser">
+            <p> Ticket Number: {{appliance.ticketNum}}</p> 
+            <input type="hidden" id="ticketNum" name = "ticketNum" placeholder ="Ticket Number">
+            <p> Selling Price: {{appliance.sellingPrice}} </p> 
+            <input type="hidden" step = ".01" id="sellingPrice" name = "sellingPrice" placeholder = "Selling Price">
             <br>
             {% if appliance.scrapped %}
-            Scrapped <input  type = "checkbox" id ="scrap" name = "scrap" value = "scrap" checked>
+            <span id = "scrapWords"></span><input  type = "hidden" id ="scrap" name = "scrap" value = "scrap" checked>
             {% else %}
-            Scrapped <input  type = "checkbox" id ="scrap" name = "scrap" value = "scrap" unchecked>
+            <span id = "scrapWords"></span><input  type = "hidden" id ="scrap" name = "scrap" value = "scrap" unchecked>
             {% endif %}
             <br>
-            <input type = "submit" id = "editSubmit" name = "editSubmit" value = "Save Changes"> 
+            <input type = "hidden" id = "editSubmit" name = "editSubmit" value = "Save Changes"> 
         </form>
             
 						
