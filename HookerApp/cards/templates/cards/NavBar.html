@@ -27,6 +27,7 @@
         {% block page %} {% endblock %}
     </body>
     <script>
+        // unhides edit text boxes in applianceDetails. 
         function editAppliance(){
             
             serial = document.getElementById("serialNumber");
@@ -36,9 +37,6 @@
                 checkbox = "checkbox"
                 submit = "submit"
             }
-            
-
-            
             document.getElementById("serialNumber").type = text;
             document.getElementById("class").type = text;
             document.getElementById("loadDate").type = text;
@@ -50,18 +48,14 @@
             document.getElementById("sellingPrice").type = number;            
             document.getElementById("scrap").type = checkbox;            
             document.getElementById("editSubmit").type = submit;
-            document.getElementById("scrapWords").innerHTML  = "Scrapped"          
-            
+            document.getElementById("scrapWords").innerHTML  = "Scrapped"           
         }
 
-        function checkHidden(type){
-            if(type == hidden){
-                return true;
-            }
-            else{
-                return false;
-            }
+        function editCard(){
+            document.getElementById("editDiv").style.display = "block";
         }
+        
+
 
     </script>
 

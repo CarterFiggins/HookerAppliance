@@ -197,6 +197,20 @@ def editAppliance(request, appliance_id):
 	appliance.save()
 	return redirect('/applianceDetails/' + str(appliance_id))
 
+def editCard(request, card_id):
+	card = get_object_or_404(Card, pk=card_id)
+
+	print("MADE IT TO EDIT CARD")
+
+	if(request.POST['brand'] != ''):
+		card.brand = request.POST['brand']
+	if(request.POST['type'] != ''):
+		card.applianceType = request.POST['type']
+	if(request.POST['model'] != ''):
+		card.modelNumber = request.POST['model']
+	card.save()
+	return redirect('/applianceView/' + str(card_id))
+
 def deleteCard(request, card_id):
 	card = get_object_or_404(Card, pk=card_id)
 	card.delete()
