@@ -1,10 +1,14 @@
 {% extends "cards/NavBar.html" %}
 {% block page %}
 
-	<h1 class = "center">  Modle: "{{appliance.card.modelNumber}}"  Serial: {{appliance.serialNumber}} </h1>
-
+	<h1 class = "center">  Model: "{{appliance.card.modelNumber}}"  Serial: {{appliance.serialNumber}} </h1>
+    <div id = "deleteDiv" class = "center" style = "display: none;">
+            <p>Are you sure you want to deleat this Appliance?</p>
+            <p>You will not be able to see this information again.</p>
+            <a href = "/deleteAppliance/{{appliance.id}}" class = "finalDelete" >Yes</a> <a href = "/applianceDetails/{{appliance.id}}/" class = "finalDelete">No</a>
+    </div>
 	<div class ="cardBox cards" >
-        <a href = "/deleteAppliance/{{appliance.id}}" class = "delete">Delete Appliance</a>
+        <span onclick = "deleteCard()" class = "delete">Delete Appliance</span>
         <h1>Appliance Details   <a> <span onclick = "editAppliance()" class = "editButton">Edit</span> </a></h1> 
         {% if appliance.scrapped %}
             <span class = "redBig">Scrapped</span>

@@ -218,8 +218,9 @@ def deleteCard(request, card_id):
 
 def deleteAppliance(request,appliance_id):
 	appliance = get_object_or_404(Appliance, pk=appliance_id)
+	card = appliance.card
 	appliance.delete()
-	return redirect('/lookAppliance')
+	return redirect('/applianceView/' + str(card.id))
 
 def init(request):
 	print('Nuking')

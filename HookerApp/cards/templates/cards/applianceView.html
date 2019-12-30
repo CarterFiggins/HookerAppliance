@@ -14,8 +14,14 @@
 		</form>
 	</div>
 
+	<div id = "deleteDiv" class = "center" style = "display: none;">
+		<p>Are you sure you want to deleat this Card?</p>
+		<p>All of the Appliances will be deleted too</p>
+		<a href = "/deleteCard/{{cards.id}}" class = "finalDelete" >Yes</a> <a href = "/applianceView/{{cards.id}}/" class = "finalDelete" >No</a>
+	</div>
+
 	<div class ="cardBox cards" >
-			<a href = "/deleteCard/{{cards.id}}" class = "delete">Delete Card</a>
+			<span onclick = "deleteCard()" class = "delete">Delete Card</span>
 			<h1 class = "center">Add Appliance</h1>
 			
 			<form action = '/newAppliance/{{cards.id}}/' method = "post">

@@ -117,11 +117,17 @@ body{
 	margin: .2%;
 }
 .delete{
-	color: red;
+	color: #A72928;
 	float: right;
 }
 .delete:hover{
 	color: red;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.finalDelete{
+	font-size: 110%;
 }
 
 .allCards{
@@ -259,6 +265,7 @@ p{
 .editButton:hover{
 	background-color: white;
 	color: black;
+	cursor: pointer;
 }
 
 .allCards:hover{
