@@ -229,7 +229,7 @@ def init(request):
 	print("nuke Done")
 	
 	print("making Cards")
-	for i in range(1000):
+	for i in range(10):
 		whirlPool = Card(modelNumber = "WED4916FW" ,brand= "Whirlpool" ,applianceType = "Dryer" , pub_date= timezone.now())
 		maytag = Card(modelNumber = "MFB2055FRZ" ,brand= "Maytag" ,applianceType = "Refrigerator" , pub_date= timezone.now())
 		lg = Card(modelNumber = "LDE4413ST" ,brand= "LG" ,applianceType = "Electric Range" , pub_date= timezone.now())
