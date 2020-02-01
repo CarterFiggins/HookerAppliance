@@ -7,9 +7,9 @@
 	<div id = "editDiv" class = "center" style = "display: none;">
 		<form action = '/editCard/{{cards.id}}/' method = "post">
 			{% csrf_token %}
-			Brand: <input type = "text" id = "brand" name = 'brand' placeholder="Brand">
-			Apppliance Type: <input type = "text" id = "type" name = 'type' placeholder="Appliance Type">
-			Modle: <input type = "text" id = "model" name = "model" placeholder= "Model">
+			Brand: <input type = "text" id = "brand" name = 'brand' placeholder= {{cards.brand}}>
+			Apppliance Type: <input type = "text" id = "type" name = 'type' placeholder= {{cards.applianceType}}>
+			Modle: <input type = "text" id = "model" name = "model" placeholder= "{{cards.modelNumber}">
 			<input type = "submit" id = "editSubmit" name = "editSubmin" value = "Save Changes">
 		</form>
 	</div>
