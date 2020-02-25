@@ -7,7 +7,7 @@ I have decided to make a program that can keep track of the appliances digitally
 Using the framework django in this project. 
 
 to have a temporary server and database for the website, run this code in the comandline.
-Be in the dirctory with manage.py to run these commands
+Be in the dirctory with manage.py to run these commands (make sure django is installed)
 
 $python manage.py makemigrations
 
