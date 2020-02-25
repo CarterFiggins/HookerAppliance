@@ -1,7 +1,7 @@
 # HookerAppliance
 To Organize Appliance Stock for the Hooker Appliance Store
 
-At the job I currently work at, they have hand written cards to keep track of the appliances that come into the store.
+At the job I use to work at, they have hand written cards to keep track of the appliances that come into the store.
 I have decided to make a program that can keep track of the appliances digitally.
 
 Using the framework django in this project. 
